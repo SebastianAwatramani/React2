@@ -6,8 +6,10 @@ class App extends Component {
     render() {
         return (
           <div className="App">
-            <h1> Hi, I am a react app.  Wait holy shit, in real time?</h1>
+            <h1> Hi, I am a react app.</h1>
               <p>This is really working</p>
+              <Person />
+              <Person />
               <Person />
           </div>
         );
