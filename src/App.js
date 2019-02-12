@@ -8,9 +8,9 @@ class App extends Component {
           <div className="App">
             <h1> Hi, I am a react app.</h1>
               <p>This is really working</p>
-              <Person />
-              <Person />
-              <Person />
+              <Person name = "Sebastian" age = "35"/>
+              <Person name = "Tina" age = "30" />
+              <Person name = "Ginger" age = "22">My Hobbies: Racing</Person>
           </div>
         );
 
