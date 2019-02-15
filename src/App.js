@@ -9,17 +9,29 @@ class App extends Component {
             {name: "Tina", age: 30},
             {name: "Peter", age: 55}
         ]
-    }
+    };
+
+    switchNameHandler = () => {
+      this.setState({
+          persons: [
+              {name: "Seb", age: 35},
+              {name: "Tina", age: 30},
+              {name: "Peter", age: 42}
+          ]
+      })
+    };
+
+
     render() {
         return (
-          <div className="App">
-            <h1> Hi, I am a react app.</h1>
-              <p>This is really working</p>
-              <button>Switch Name</button>
-              <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} />
-              <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} />
-              <Person name = {this.state.persons[2].name} age = {this.state.persons[2].age}>My Hobbies: Racing</Person>
-          </div>
+            <div className="App">
+                <h1> Hi, I am a react app.</h1>
+                <p>This is really working</p>
+                <button onClick={this.switchNameHandler}>Switch Name</button>
+                <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+                <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
+                <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>My Hobbies: Racing</Person>
+            </div>
         );
 
         // return React.createElement('div', 'null',
