@@ -12,13 +12,23 @@ class App extends Component {
     };
 
     switchNameHandler = (newName) => {
-      this.setState({
-          persons: [
-              {name: newName, age: 35},
-              {name: "Tina", age: 30},
-              {name: "Peter", age: 42}
-          ]
-      })
+        this.setState({
+            persons: [
+                {name: newName, age: 35},
+                {name: "Tina", age: 30},
+                {name: "Peter", age: 42}
+            ]
+        })
+    };
+
+    nameChangedHandler = (event) => {
+        this.setState({
+            persons: [
+                {name: "Sebbbbastian!!!", age: 35},
+                {name: event.target.value, age: 30},
+                {name: "Peter", age: 42}
+            ]
+        })
     };
 
 
@@ -32,12 +42,16 @@ class App extends Component {
                     name={this.state.persons[0].name}
                     age={this.state.persons[0].age}
                 />
-                <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
+                <Person
+                    name={this.state.persons[1].name}
+                    age={this.state.persons[1].age}
+                    changed={this.nameChangedHandler}
+                />
                 <Person
                     name={this.state.persons[2].name}
                     age={this.state.persons[2].age}
                     //Passing switchNameHandler to this instantiation of person component by assigning a reference to () to property click
-                click={this.switchNameHandler.bind(this, "Seb!")}>My Hobbies: Racing</Person>
+                    click={this.switchNameHandler.bind(this, "Seb!")}>My Hobbies: Racing</Person>
             </div>
         );
 
