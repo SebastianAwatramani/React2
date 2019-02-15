@@ -13,16 +13,6 @@ class App extends Component {
         showPersons: false
     };
 
-    switchNameHandler = (newName) => {
-        this.setState({
-            persons: [
-                {name: newName, age: 35},
-                {name: "Tina", age: 30},
-                {name: "Peter", age: 42}
-            ]
-        })
-    };
-
     nameChangedHandler = (event) => {
         this.setState({
             persons: [
@@ -31,6 +21,14 @@ class App extends Component {
                 {name: "Peter", age: 42}
             ]
         })
+    };
+
+    deletePersonHandler = (personIndex) => {
+        // const persons = this.state.persons.slice(); //slice without args just copies array rather than returning a pointer to it.  This is important so as to not directly mutate state.
+        //But instead, use ES6 spread operator ...
+        const persons = [...this.state.persons];
+        persons.splice(personIndex, 1);
+        this.setState({persons: persons})
     };
 
     togglePersonsHandler = () => {
@@ -54,10 +52,11 @@ class App extends Component {
             persons = (
                 <div>
                     {/*Anonymous function I pass to map method is executed on every item in the array*/}
-                    {this.state.persons.map(person => {
+                    {this.state.persons.map((person, index) => { //Can pass index as explicit second argument. Must wrap in () 
                         return <Person
                             name={person.name}
                             age={person.age}
+                            click={() => this.deletePersonHandler(index)}
                         />
                     })}
                 </div>
