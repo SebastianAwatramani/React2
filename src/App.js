@@ -9,7 +9,8 @@ class App extends Component {
             {name: "Sebastian", age: 35},
             {name: "Tina", age: 30},
             {name: "Peter", age: 55}
-        ]
+        ],
+        showPersons: false
     };
 
     switchNameHandler = (newName) => {
@@ -48,21 +49,6 @@ class App extends Component {
                 <h1> Hi, I am a react app.</h1>
                 <p>This is really working</p>
                 <button style={style}
-                    onClick={() => this.switchNameHandler("Sebastian!!")}>Switch Name</button>
-                <Person
-                    name={this.state.persons[0].name}
-                    age={this.state.persons[0].age}
-                />
-                <Person
-                    name={this.state.persons[1].name}
-                    age={this.state.persons[1].age}
-                    changed={this.nameChangedHandler}
-                />
-                <Person
-                    name={this.state.persons[2].name}
-                    age={this.state.persons[2].age}
-                    //Passing switchNameHandler to this instantiation of person component by assigning a reference to () to property click
-                    click={this.switchNameHandler.bind(this, "Seb!")}>My Hobbies: Racing</Person>
             </div>
         );
 
