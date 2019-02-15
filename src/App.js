@@ -11,10 +11,10 @@ class App extends Component {
         ]
     };
 
-    switchNameHandler = () => {
+    switchNameHandler = (newName) => {
       this.setState({
           persons: [
-              {name: "Seb", age: 35},
+              {name: newName, age: 35},
               {name: "Tina", age: 30},
               {name: "Peter", age: 42}
           ]
@@ -27,7 +27,7 @@ class App extends Component {
             <div className="App">
                 <h1> Hi, I am a react app.</h1>
                 <p>This is really working</p>
-                <button onClick={this.switchNameHandler}>Switch Name</button>
+                <button onClick={() => this.switchNameHandler("Sebastian!!")}>Switch Name</button>
                 <Person
                     name={this.state.persons[0].name}
                     age={this.state.persons[0].age}
@@ -37,7 +37,7 @@ class App extends Component {
                     name={this.state.persons[2].name}
                     age={this.state.persons[2].age}
                     //Passing switchNameHandler to this instantiation of person component by assigning a reference to () to property click
-                click={this.switchNameHandler}>My Hobbies: Racing</Person>
+                click={this.switchNameHandler.bind(this, "Seb!")}>My Hobbies: Racing</Person>
             </div>
         );
 
