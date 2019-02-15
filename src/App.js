@@ -37,6 +37,7 @@ class App extends Component {
         const doesShow = this.state.showPersons;
         this.setState({showPersons: !doesShow}); //Sets showPersons to opposite of whatever it is.  Pretty cool method.
     };
+
     render() {
 
         const style = {
@@ -46,26 +47,19 @@ class App extends Component {
             padding: '8px',
             cursor: 'pointer'
         };
-    //Using ternaries for conditional rendering can get cumbersome in large projects.  This method here separates the logic out
+        //Using ternaries for conditional rendering can get cumbersome in large projects.  This method here separates the logic out
         let persons = null;
 
-        if(this.state.showPersons) {
+        if (this.state.showPersons) {
             persons = (
                 <div>
-                    <Person
-                        name={this.state.persons[0].name}
-                        age={this.state.persons[0].age}
-                    />
-                    <Person
-                        name={this.state.persons[1].name}
-                        age={this.state.persons[1].age}
-                        changed={this.nameChangedHandler}
-                    />
-                    <Person
-                        name={this.state.persons[2].name}
-                        age={this.state.persons[2].age}
-                        //Passing switchNameHandler to this instantiation of person component by assigning a reference to () to property click
-                        click={this.switchNameHandler.bind(this, "Seb!")}>My Hobbies: Racing</Person>
+                    {/*Anonymous function I pass to map method is executed on every item in the array*/}
+                    {this.state.persons.map(person => {
+                        return <Person
+                            name={person.name}
+                            age={person.age}
+                        />
+                    })}
                 </div>
             );
         }
