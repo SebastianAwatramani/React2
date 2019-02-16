@@ -6,9 +6,9 @@ import Person from './Person/Person'
 class App extends Component {
     state = {
         persons: [
-            {name: "Sebastian", age: 35},
-            {name: "Tina", age: 30},
-            {name: "Peter", age: 55}
+            {name: "Sebastian", age: 35, id: 0},
+            {name: "Tina", age: 30, id: 1},
+            {name: "Peter", age: 55, id: 2}
         ],
         showPersons: false
     };
@@ -52,11 +52,12 @@ class App extends Component {
             persons = (
                 <div>
                     {/*Anonymous function I pass to map method is executed on every item in the array*/}
-                    {this.state.persons.map((person, index) => { //Can pass index as explicit second argument. Must wrap in () 
+                    {this.state.persons.map((person, index) => { //Can pass index as explicit second argument. Must wrap in ()
                         return <Person
                             name={person.name}
                             age={person.age}
                             click={() => this.deletePersonHandler(index)}
+                            key={person.id}
                         />
                     })}
                 </div>
